@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全国新增建档立卡新能源装机数据提取工具</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+  <style>
+    body { box-sizing: border-box; min-width: 200px; max-width: 980px; margin: 0 auto; padding: 45px; background: #f6f8fa; }
+    .markdown-body { background: #fff; padding: 32px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+    .header { text-align: center; padding: 24px 0 32px; border-bottom: 1px solid #d0d7de; margin-bottom: 32px; }
+    .header h1 { margin: 0 0 8px; font-size: 32px; }
+    .header p { color: #57606a; margin: 0; }
+    .badges { margin: 16px 0; }
+    .badges img { display: inline-block; margin: 2px 4px; vertical-align: middle; }
+    .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
+    .doc-card { display: block; padding: 20px; border: 1px solid #d0d7de; border-radius: 6px; background: #fff; text-decoration: none; color: #0969da; transition: border-color 0.2s, transform 0.2s; }
+    .doc-card:hover { border-color: #0969da; transform: translateY(-2px); }
+    .doc-card h3 { margin: 0 0 8px; font-size: 18px; }
+    .doc-card p { margin: 0; color: #57606a; font-size: 14px; line-height: 1.5; }
+    .doc-card .icon { font-size: 24px; margin-right: 8px; vertical-align: middle; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 14px; }
+    .footer a { color: #0969da; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <article class="markdown-body">
+    <header class="header">
+      <h1>全国新增建档立卡新能源装机</h1>
+      <p>数据采集与汇总工具 — 项目文档</p>
+      <div class="badges">
+        <a href="https://github.com/Chauncy-Guo/renewable-filing-tracker"><img src="https://img.shields.io/badge/GitHub-Chauncy--Guo%2Frenewable--filing--tracker-181717.svg?logo=github" alt="GitHub"></a>
+        <img src="https://img.shields.io/badge/License-AGPL--3.0-blue.svg" alt="License: AGPL-3.0">
+        <img src="https://img.shields.io/badge/Docs-CC--BY--NC--4.0-lightgrey.svg" alt="Docs: CC-BY-NC-4.0">
+      </div>
+    </header>
+
+    <h2>项目简介</h2>
+    <p>自动化采集 <a href="https://sso.renewable.org.cn/noticeHisroty?noticeType=1">国能新能建档立卡系统</a> 发布的《全国新增建档立卡新能源发电项目情况》公告,
+    把随附的 PDF / Word 文件解析为 Excel, 并按月份和类型汇总到统一表格。</p>
+
+    <h2>项目文档</h2>
+    <div class="doc-grid">
+      <a class="doc-card" href="architecture.md">
+        <h3><span class="icon">🏗️</span>架构设计</h3>
+        <p>模块划分、调用链、扩展点; 数据流图。</p>
+      </a>
+      <a class="doc-card" href="data-format.md">
+        <h3><span class="icon">📊</span>数据格式</h3>
+        <p>输入公告、PDF、Word 与输出 Excel 的字段定义。</p>
+      </a>
+      <a class="doc-card" href="faq.md">
+        <h3><span class="icon">❓</span>常见问题</h3>
+        <p>文件头校验、相对路径、动态表类型、错误修复等。</p>
+      </a>
+    </div>
+
+    <h2>快速开始</h2>
+    <pre><code class="language-bash"># 1. 安装依赖
+npm install
+pip install -r requirements.txt
+
+# 2. 一键执行 (下载 → 提取 → 汇总)
+node scripts/download_new.js
+python scripts/extract_all.py
+python scripts/merge_excel.py</code></pre>
+
+    <h2>License</h2>
+    <ul>
+      <li><strong>代码</strong>: <a href="https://www.gnu.org/licenses/agpl-3.0">AGPL-3.0</a> — 网络服务也必须开源; 商用需公开修改后的源代码</li>
+      <li><strong>文档</strong>: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> — 署名 + 禁止商业用途</li>
+    </ul>
+  </article>
+
+  <footer class="footer">
+    <p>
+      <a href="https://github.com/Chauncy-Guo/renewable-filing-tracker">GitHub 仓库</a> ·
+      Copyright (C) 2026 Chauncy-Guo
+    </p>
+  </footer>
+</body>
+</html>
