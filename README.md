@@ -1,5 +1,11 @@
 # 全国新增建档立卡新能源装机数据提取工具
 
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Docs: CC-BY-NC-4.0](https://img.shields.io/badge/Docs-CC--BY--NC--4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB.svg?logo=python&logoColor=white)](https://www.python.org)
+[![Node 20+](https://img.shields.io/badge/Node-20+-339933.svg?logo=node.js&logoColor=white)](https://nodejs.org)
+[![GitHub repo](https://img.shields.io/badge/GitHub-Chauncy--Guo%2Frenewable--filing--tracker-181717.svg?logo=github)](https://github.com/Chauncy-Guo/renewable-filing-tracker)
+
 > 自动化采集 [国能新能建档立卡系统](https://sso.renewable.org.cn/noticeHisroty?noticeType=1)
 > 发布的《全国新增建档立卡新能源发电项目情况》公告,
 > 把随附的 PDF / Word 文件解析为 Excel, 并按月份和类型汇总到统一表格。
@@ -49,15 +55,20 @@
 │   ├── extract_all.py               #   一键: PDF + Word -> Excel
 │   └── merge_excel.py               #   一键: Excel -> 汇总
 │
-└── output/                          # 所有数据产物 + 项目文档
-    ├── PDFs/                        #   原始 PDF / Word 文件
-    ├── Excel/                       #   单月单类型 xlsx (中间产物)
-    ├── 汇总/                        #   4 类汇总 xlsx (最终交付)
-    ├── api_records_target.json      #   公告列表缓存
-    └── docs/                        #   详细文档
-        ├── architecture.md          #     架构与模块设计
-        ├── data-format.md           #     输入 / 输出数据格式
-        └── faq.md                   #     常见问题与维护
+└── output/                          # 所有数据产物
+│   ├── PDFs/                        #   原始 PDF / Word 文件
+│   ├── Excel/                       #   单月单类型 xlsx (中间产物)
+│   ├── 汇总/                        #   4 类汇总 xlsx (最终交付)
+│   ├── api_records_target.json      #   公告列表缓存
+│   └── docs/                        #   详细文档 (不入仓, 副本在仓库根 docs/)
+│
+├── docs/                            # 入仓的详细文档 (供 GitHub Pages)
+│   ├── architecture.md              #   架构与模块设计
+│   ├── data-format.md               #   输入 / 输出数据格式
+│   ├── faq.md                       #   常见问题与维护
+│   └── .nojekyll                    #   跳过 Jekyll 渲染
+│
+└── LICENSE                          # AGPL-3.0 全文
 ```
 
 > 全部数据产物统一放在 `output/`, 与代码 (`src/` / `scripts/`) 严格分离, 方便打包、清理、迁移。
@@ -145,6 +156,25 @@ python -c "import sys; sys.path.insert(0,'src/python'); from renewable_extract.m
 
 ## 详细文档
 
-- [架构设计](output/docs/architecture.md) — 模块划分、调用链、扩展点
-- [数据格式](output/docs/data-format.md) — 输入公告、PDF、Word 与输出 Excel 字段
-- [常见问题](output/docs/faq.md) — 文件头校验、相对路径、动态表类型等
+- [架构设计](docs/architecture.md) — 模块划分、调用链、扩展点
+- [数据格式](docs/data-format.md) — 输入公告、PDF、Word 与输出 Excel 字段
+- [常见问题](docs/faq.md) — 文件头校验、相对路径、动态表类型等
+
+> GitHub Pages 在线版: <https://chauncy-guo.github.io/renewable-filing-tracker/>
+
+## License
+
+本项目采用 **双重 license**, 根据内容性质分别适用:
+
+| 内容 | License | 含义 |
+| --- | --- | --- |
+| 全部源码 (`src/` `scripts/`) | [AGPL-3.0](LICENSE) | 网络服务也必须开源; 商用需公开修改后的源代码 |
+| 项目文档 (`docs/` `README.md`) | [CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/) | 署名 + 禁止商业用途 |
+
+简单说:
+
+- 你可以自由使用、修改、分发
+- **但**: 如果你把这个项目 (或其修改版) 用作网络服务 (SaaS / API) 提供给他人, 必须公开全部修改后的源代码
+- **并且**: 项目文档禁止用于商业用途
+
+Copyright (C) 2026 Chauncy-Guo
