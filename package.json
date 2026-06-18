@@ -1,0 +1,24 @@
+{
+  "name": "renewable-extract",
+  "version": "1.0.0",
+  "description": "全国新增建档立卡新能源装机公告 (PDF/Word) -> Excel 提取工具",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "query": "node src/node/query_api.js",
+    "download": "node src/node/download_word.js",
+    "download-new": "node scripts/download_new.js",
+    "extract": "python scripts/extract_all.py",
+    "merge": "python scripts/merge_excel.py"
+  },
+  "dependencies": {
+    "docx2txt": "^0.1.0",
+    "mammoth": "^1.12.0",
+    "officeparser": "^7.2.1",
+    "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^6.0.227",
+    "playwright": "^1.61.0",
+    "word-extractor": "^1.0.4",
+    "xlsx": "^0.18.5"
+  }
+}

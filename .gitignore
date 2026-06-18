@@ -1,0 +1,84 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node
+node_modules/
+npm-debug.log*
+
+# 临时 / 调试产物
+_*.py
+_*.mjs
+_*.cjs
+_*.js
+_*.txt
+_*.html
+_*.png
+~$*
+__new_*
+all_records.json
+api_*.json
+api_requests.json
+api_responses*.json
+capture_*.js
+debug_page1.*
+doc_explore.txt
+download_*.js
+download_*.log
+download_log.txt
+explore*.js
+explore*.mjs
+find_*.js
+get_*.js
+page.html
+pdf_explore.txt
+query_*.js
+query_log*.txt
+remoteEntry.js
+resp1.json
+test_*.mjs
+test_*.cjs
+word_explore*.txt
+find_pdfs.js
+all_records.json
+download_may2024.js
+
+# 例外: scripts/download_new.js 是正式入口, 需要入仓
+!scripts/download_new.js
+
+# 输出目录 (运行时生成)
+output/_tmp_*.json
+output/_manifest*.json
+
+# =====================================================
+# output/ 下所有数据产物 + 文档不入仓, 仅保留目录占位
+# =====================================================
+# 缓存 / 中间 JSON
+output/api_records_target.json
+
+# 数据产物
+output/PDFs/*
+output/Excel/*
+output/汇总/*
+
+# 文档 (用户要求 output 下的文档不入仓)
+output/docs/*
+output/docs/**
+
+# 保留每个子目录的 .gitkeep 占位 (让 git 跟踪目录结构)
+!output/PDFs/.gitkeep
+!output/Excel/.gitkeep
+!output/汇总/.gitkeep
+!output/docs/.gitkeep
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# 虚拟环境
+venv/
+env/
+.venv/
